@@ -1,0 +1,16 @@
+{
+  "name": "suprabox-daily-reminder",
+  "version": "1.0.0",
+  "description": "Daily planning reminder for SUPRABOX — sends tomorrow's missions at 22h00",
+  "main": "daily-reminder.js",
+  "scripts": {
+    "start": "node daily-reminder.js"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "form-data": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
