@@ -1,8 +1,0 @@
-[phases.setup]
-nixPkgs = ["fontconfig", "freetype", "pkgconfig"]
-
-[phases.build]
-cmds = ["npm install"]
-
-[start]
-cmd = "node daily-reminder.js"
