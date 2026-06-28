@@ -1,1 +1,1 @@
-{"name":"suprabox-daily-reminder","version":"1.3.0","main":"daily-reminder.js","scripts":{"start":"node daily-reminder.js"},"engines":{"node":">=18"}}
+{"name":"suprabox-daily-reminder","version":"1.3.0","main":"daily-reminder.js","scripts":{"start":"node daily-reminder.js"},"engines":{"node":">=18"},"dependencies":{"node-cron":"^4.5.0"}}

@@ -106,4 +106,6 @@ async function main(){
     await sendTG(png,cap);await sendWA(png,cap);console.log('✅ Done!');
   }catch(e){console.error('❌',e.message);process.exit(1);}
 }
-main();
+const schedule = require("node-cron");
+schedule.cron("0 22 * * *", () => { main(); });
+console.log("⏰ Scheduler started...");
