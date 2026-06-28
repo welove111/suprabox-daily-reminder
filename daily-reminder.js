@@ -5,7 +5,7 @@
 // Dimanche: pas d'envoi (pas de travail lundi = repos)
 // ══════════════════════════════════════════════
 
-const { createCanvas } = require('canvas');
+const { createCanvas } = require('@napi-rs/canvas');
 
 // ── CONFIG ──────────────────────────────────────
 const SB_URL     = process.env.SB_URL     || 'https://yjtkahuihipiodcrodwx.supabase.co';
@@ -327,19 +327,34 @@ function roundRect(ctx, x, y, w, h, r) {
 
 // ── SEND TELEGRAM ─────────────────────────────────
 async function sendTelegram(imageBuffer, caption) {
-  const FormData = require('form-data');
-  const form = new FormData();
-  form.append('chat_id', TG_CHAT);
-  form.append('caption', caption);
-  form.append('parse_mode', 'Markdown');
-  form.append('photo', imageBuffer, { filename: 'planning.png', contentType: 'image/png' });
+  // Use multipart/form-data manually
+  const boundary = '----FormBoundary' + Math.random().toString(36).slice(2);
+  
+  const header = Buffer.from(
+    `--${boundary}\r\n` +
+    `Content-Disposition: form-data; name="chat_id"\r\n\r\n${TG_CHAT}\r\n` +
+    `--${boundary}\r\n` +
+    `Content-Disposition: form-data; name="parse_mode"\r\n\r\nMarkdown\r\n` +
+    `--${boundary}\r\n` +
+    `Content-Disposition: form-data; name="caption"\r\n\r\n${caption}\r\n` +
+    `--${boundary}\r\n` +
+    `Content-Disposition: form-data; name="photo"; filename="planning.png"\r\n` +
+    `Content-Type: image/png\r\n\r\n`
+  );
+  const footer = Buffer.from(`\r\n--${boundary}--\r\n`);
+  const body = Buffer.concat([header, imageBuffer, footer]);
 
   const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendPhoto`, {
     method: 'POST',
-    body: form,
-    headers: form.getHeaders(),
+    headers: {
+      'Content-Type': `multipart/form-data; boundary=${boundary}`,
+      'Content-Length': body.length,
+    },
+    body,
   });
-  const json = await res.json();
+  const text = await res.text();
+  let json;
+  try { json = JSON.parse(text); } catch(e) { throw new Error('Telegram parse error: ' + text.slice(0,200)); }
   if (!json.ok) throw new Error(`Telegram error: ${JSON.stringify(json)}`);
   console.log('✅ Telegram envoyé');
 }
