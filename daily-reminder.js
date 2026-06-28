@@ -109,5 +109,5 @@ async function main(){
 // main(); -- replaced by cron
 
 const nodeCron = require("node-cron");
-nodeCron.schedule("* * * * *", main);
+nodeCron.schedule("0 22 * * *", main);
 console.log("⏰ Scheduler 22h00 ready...");
