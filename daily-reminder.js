@@ -106,8 +106,8 @@ async function main(){
     await sendTG(png,cap);await sendWA(png,cap);console.log('✅ Done!');
   }catch(e){console.error('❌',e.message);process.exit(1);}
 }
-const schedule = require("node-cron");
-cron.schedule("0 22 * * *", () => { const nodeCron = require("node-cron");
-nodeCron.schedule("0 22 * * *", () => { main(); });
-console.log("⏰ Scheduler 22h00 started..."); });
-console.log("⏰ Scheduler started...");
+// main(); -- replaced by cron
+
+const nodeCron = require("node-cron");
+nodeCron.schedule("0 22 * * *", main);
+console.log("⏰ Scheduler 22h00 ready...");
