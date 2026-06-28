@@ -107,5 +107,7 @@ async function main(){
   }catch(e){console.error('❌',e.message);process.exit(1);}
 }
 const schedule = require("node-cron");
-schedule.cron("0 22 * * *", () => { main(); });
+schedule.cron("0 22 * * *", () => { const cron = require("node-cron");
+cron.schedule("0 22 * * *", () => { main(); });
+console.log("⏰ Scheduler 22h00 started..."); });
 console.log("⏰ Scheduler started...");
