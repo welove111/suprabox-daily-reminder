@@ -5,7 +5,7 @@
 // Dimanche: pas d'envoi (pas de travail lundi = repos)
 // ══════════════════════════════════════════════
 
-const { createCanvas } = require('@napi-rs/canvas');
+const { createCanvas } = require('canvas');
 
 // ── CONFIG ──────────────────────────────────────
 const SB_URL     = process.env.SB_URL     || 'https://yjtkahuihipiodcrodwx.supabase.co';

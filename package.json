@@ -9,7 +9,8 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
     "node-cron": "^4.5.0",
-    "@napi-rs/canvas": "^0.1.65"
+    "canvas": "^2.11.2"
   }
 }
