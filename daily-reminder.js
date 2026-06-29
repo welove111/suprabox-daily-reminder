@@ -5,11 +5,11 @@
 // Dimanche: pas d'envoi (pas de travail lundi = repos)
 // ══════════════════════════════════════════════
 
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas, GlobalFonts } = require('@napi-rs/canvas');
 const path = require('path');
 try {
-  registerFont(path.join(__dirname,'fonts','Roboto-Regular.ttf'),{family:'Roboto'});
-  registerFont(path.join(__dirname,'fonts','Roboto-Bold.ttf'),{family:'Roboto',weight:'bold'});
+  GlobalFonts.registerFromPath(path.join(__dirname,'fonts','Roboto-Regular.ttf'),'Roboto');
+  GlobalFonts.registerFromPath(path.join(__dirname,'fonts','Roboto-Bold.ttf'),'RobotoBold');
   console.log('Fonts OK');
 } catch(e){ console.log('Font err:',e.message); }
 
