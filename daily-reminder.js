@@ -160,7 +160,7 @@ async function buildImage(data) {
   ctx.fillRect(0, HEADER_H - 2, W, 2);
 
   // SUPRABOX logo
-  ctx.font = 'bold 22px Arial';
+  ctx.font = 'bold 22px sans-serif';
   ctx.fillStyle = '#ffffff';
   ctx.fillText('SUPRA', PAD, 38);
   ctx.fillStyle = '#f5a623';
@@ -171,11 +171,11 @@ async function buildImage(data) {
   ctx.fillRect(PAD + 130, 20, 1, 36);
 
   // Title
-  ctx.font = 'bold 20px Arial';
+  ctx.font = 'bold 20px sans-serif';
   ctx.fillStyle = '#00e5ff';
   ctx.fillText('ROULEMENT CHAUFFEURS', PAD + 148, 32);
 
-  ctx.font = '11px Arial';
+  ctx.font = '11px sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.4)';
   ctx.fillText('PLANNING QUOTIDIEN · TASSILA MESSAGERIES · AGADIR', PAD + 148, 52);
 
@@ -189,11 +189,11 @@ async function buildImage(data) {
   roundRect(ctx, badgeX, 20, 220, 56, 10);
   ctx.stroke();
 
-  ctx.font = 'bold 13px Arial';
+  ctx.font = 'bold 13px sans-serif';
   ctx.fillStyle = '#f5a623';
   ctx.textAlign = 'center';
   ctx.fillText(day.toUpperCase(), badgeX + 110, 40);
-  ctx.font = '11px Arial';
+  ctx.font = '11px sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.6)';
   ctx.fillText(dateFormatted.split(' ').slice(1).join(' '), badgeX + 110, 60);
   ctx.textAlign = 'left';
@@ -204,7 +204,7 @@ async function buildImage(data) {
   roundRect(ctx, PAD, tY, W - PAD * 2, 44, 10);
   ctx.fill();
 
-  ctx.font = 'bold 11px Arial';
+  ctx.font = 'bold 11px sans-serif';
   ctx.fillStyle = 'rgba(0,229,255,0.7)';
   ctx.letterSpacing = '2px';
   ctx.fillText('CHAUFFEUR', PAD + 20, tY + 22);
@@ -235,19 +235,19 @@ async function buildImage(data) {
     ctx.fillStyle = 'rgba(255,255,255,0.06)';
     roundRect(ctx, PAD + 12, rowY + ROW_H/2 - 14, 28, 28, 5);
     ctx.fill();
-    ctx.font = 'bold 10px Arial';
+    ctx.font = 'bold 10px sans-serif';
     ctx.fillStyle = 'rgba(255,255,255,0.3)';
     ctx.textAlign = 'center';
     ctx.fillText(`${i+1}`, PAD + 26, rowY + ROW_H/2 + 1);
     ctx.textAlign = 'left';
 
     // Driver name
-    ctx.font = 'bold 15px Arial';
+    ctx.font = 'bold 15px sans-serif';
     ctx.fillStyle = '#e2eaf4';
     ctx.fillText(row.driver, PAD + 52, rowY + ROW_H/2 - 4);
 
     // Driver subtitle
-    ctx.font = '10px Arial';
+    ctx.font = '10px sans-serif';
     ctx.fillStyle = 'rgba(255,255,255,0.3)';
     ctx.fillText(`Chauffeur N°${i+1}`, PAD + 52, rowY + ROW_H/2 + 14);
 
@@ -275,7 +275,7 @@ async function buildImage(data) {
       ctx.fill();
 
       // Mission text
-      ctx.font = 'bold 13px Arial';
+      ctx.font = 'bold 13px sans-serif';
       ctx.fillStyle = color.txt;
       ctx.textAlign = 'center';
       ctx.fillText(mission.toUpperCase(), misX + misW/2 + 2, misY + misH/2 + 1);
@@ -283,7 +283,7 @@ async function buildImage(data) {
 
     } else {
       // No mission
-      ctx.font = '12px Arial';
+      ctx.font = '12px sans-serif';
       ctx.fillStyle = 'rgba(255,255,255,0.15)';
       ctx.fillText('— Repos / Non défini —', PAD + DRV_W + 20, rowY + ROW_H/2 + 4);
     }
@@ -300,7 +300,7 @@ async function buildImage(data) {
 
   // ── FOOTER ──
   const footY = btY + 20;
-  ctx.font = '10px Arial';
+  ctx.font = '10px sans-serif';
   ctx.fillStyle = 'rgba(255,255,255,0.2)';
   ctx.textAlign = 'center';
   ctx.fillText('SUPRABOX · Tassila Messageries · ONCF/SUPRATOURS · Agadir', W/2, footY + 12);
