@@ -425,4 +425,6 @@ async function main() {
   }
 }
 
-main();
+const nodeCron = require('node-cron');
+nodeCron.schedule('0 21 * * *', main);
+console.log('Scheduler 22h00 Morocco ready...');
