@@ -5,7 +5,13 @@
 // Dimanche: pas d'envoi (pas de travail lundi = repos)
 // ══════════════════════════════════════════════
 
-const { createCanvas } = require('canvas');
+const { createCanvas, registerFont } = require('canvas');
+const path = require('path');
+try {
+  registerFont(path.join(__dirname,'fonts','Roboto-Regular.ttf'),{family:'Roboto'});
+  registerFont(path.join(__dirname,'fonts','Roboto-Bold.ttf'),{family:'Roboto',weight:'bold'});
+  console.log('Fonts OK');
+} catch(e){ console.log('Font err:',e.message); }
 
 // ── CONFIG ──────────────────────────────────────
 const SB_URL     = process.env.SB_URL     || 'https://yjtkahuihipiodcrodwx.supabase.co';
